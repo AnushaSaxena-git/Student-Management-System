@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\img\AdminLTEFullLogo.png" />
+    <Content Remove="wwwroot\css\img\AdminLTELogo.png" />
+    <Content Remove="wwwroot\css\img\avatar.png" />
+    <Content Remove="wwwroot\css\img\avatar2.png" />
+    <Content Remove="wwwroot\css\img\avatar3.png" />
+    <Content Remove="wwwroot\css\img\avatar4.png" />
+    <Content Remove="wwwroot\css\img\avatar5.png" />
+    <Content Remove="wwwroot\css\img\boxed-bg.jpg" />
+    <Content Remove="wwwroot\css\img\boxed-bg.png" />
+    <Content Remove="wwwroot\css\img\credit\american-express.png" />
+    <Content Remove="wwwroot\css\img\credit\cirrus.png" />
+    <Content Remove="wwwroot\css\img\credit\mastercard.png" />
+    <Content Remove="wwwroot\css\img\credit\paypal.png" />
+    <Content Remove="wwwroot\css\img\credit\paypal2.png" />
+    <Content Remove="wwwroot\css\img\credit\visa.png" />
+    <Content Remove="wwwroot\css\img\default-150x150.png" />
+    <Content Remove="wwwroot\css\img\icons.png" />
+    <Content Remove="wwwroot\css\img\photo1.png" />
+    <Content Remove="wwwroot\css\img\photo2.png" />
+    <Content Remove="wwwroot\css\img\photo3.jpg" />
+    <Content Remove="wwwroot\css\img\photo4.jpg" />
+    <Content Remove="wwwroot\css\img\prod-1.jpg" />
+    <Content Remove="wwwroot\css\img\prod-2.jpg" />
+    <Content Remove="wwwroot\css\img\prod-3.jpg" />
+    <Content Remove="wwwroot\css\img\prod-4.jpg" />
+    <Content Remove="wwwroot\css\img\prod-5.jpg" />
+    <Content Remove="wwwroot\css\img\user1-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user2-160x160.jpg" />
+    <Content Remove="wwwroot\css\img\user3-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user4-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user5-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user6-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user7-128x128.jpg" />
+    <Content Remove="wwwroot\css\img\user8-128x128.jpg" />
+    <Content Remove="wwwroot\js\adminlte.js" />
+    <Content Remove="wwwroot\js\adminlte.js.map" />
+    <Content Remove="wwwroot\js\adminlte.min.js" />
+    <Content Remove="wwwroot\js\adminlte.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FastReport.Core3.Web.Demo" Version="2025.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="7.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.2.0" />
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\img\AdminLTEFullLogo.png" />
+    <None Include="wwwroot\css\img\AdminLTELogo.png" />
+    <None Include="wwwroot\css\img\avatar.png" />
+    <None Include="wwwroot\css\img\avatar2.png" />
+    <None Include="wwwroot\css\img\avatar3.png" />
+    <None Include="wwwroot\css\img\avatar4.png" />
+    <None Include="wwwroot\css\img\avatar5.png" />
+    <None Include="wwwroot\css\img\boxed-bg.jpg" />
+    <None Include="wwwroot\css\img\boxed-bg.png" />
+    <None Include="wwwroot\css\img\credit\american-express.png" />
+    <None Include="wwwroot\css\img\credit\cirrus.png" />
+    <None Include="wwwroot\css\img\credit\mastercard.png" />
+    <None Include="wwwroot\css\img\credit\paypal.png" />
+    <None Include="wwwroot\css\img\credit\paypal2.png" />
+    <None Include="wwwroot\css\img\credit\visa.png" />
+    <None Include="wwwroot\css\img\default-150x150.png" />
+    <None Include="wwwroot\css\img\icons.png" />
+    <None Include="wwwroot\css\img\photo1.png" />
+    <None Include="wwwroot\css\img\photo2.png" />
+    <None Include="wwwroot\css\img\photo3.jpg" />
+    <None Include="wwwroot\css\img\photo4.jpg" />
+    <None Include="wwwroot\css\img\prod-1.jpg" />
+    <None Include="wwwroot\css\img\prod-2.jpg" />
+    <None Include="wwwroot\css\img\prod-3.jpg" />
+    <None Include="wwwroot\css\img\prod-4.jpg" />
+    <None Include="wwwroot\css\img\prod-5.jpg" />
+    <None Include="wwwroot\css\img\user1-128x128.jpg" />
+    <None Include="wwwroot\css\img\user2-160x160.jpg" />
+    <None Include="wwwroot\css\img\user3-128x128.jpg" />
+    <None Include="wwwroot\css\img\user4-128x128.jpg" />
+    <None Include="wwwroot\css\img\user5-128x128.jpg" />
+    <None Include="wwwroot\css\img\user6-128x128.jpg" />
+    <None Include="wwwroot\css\img\user7-128x128.jpg" />
+    <None Include="wwwroot\css\img\user8-128x128.jpg" />
+    <None Include="wwwroot\js\adminlte.js" />
+    <None Include="wwwroot\js\adminlte.js.map" />
+    <None Include="wwwroot\js\adminlte.min.js" />
+    <None Include="wwwroot\js\adminlte.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\_masterlayout1.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

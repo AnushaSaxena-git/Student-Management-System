@@ -1,0 +1,224 @@
+﻿@* @model Crudbyme.Dtos.StudentDto *@
+
+
+
+@* @{ *@
+@*     ViewData["Title"] = "Details"; *@
+@* } *@
+
+@* <h1 style="color:dimgray" class="m-3 bg-white p-3 shadow  rounded">Student Details</h1> *@
+
+@* <div> *@
+@*     @* <h4>student</h4> *@ 
+@*     <hr /> *@
+
+@*     <div class="center-wrapper m-3 bg-white p-3 shadow  rounded      d-flex justify-content-center align-content-center " style="margin:auto"> *@
+
+@*         <div class=" card-body m-3 bg-white p-3 shadow rounded d-flex justify-content-evenly border-primary "> *@
+
+
+
+@*             <div class="row  d-flex justify-content-center align-content-center"> *@
+@*             <div class="col-sm-4 "><b>StudentID:</b></div> *@
+@*             <div class="col-sm-6 justify-content-center"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.StudentId)</span> *@
+@*             </div> *@
+@*             <div class="col-sm-4"><b>First Name:</b></div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.FirstName)</span> *@
+@*             </div> *@
+
+@*             <div class="col-sm-4"><b>Last Name</b>:</div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.LastName)</span> *@
+@*             </div> *@
+
+@*             <div class="col-sm-4"><b>Email</b>:</div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.Email)</span> *@
+@*             </div> *@
+
+@*             <div class="col-sm-4"><b>Enrollment Date</b>:</div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.EnrollmentDate)</span> *@
+@*             </div> *@
+@*             <div class="col-sm-4"><b>Date of Birth</b>:</div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.DateOfBirth)</span> *@
+@*             </div> *@
+
+@*             <div class="col-sm-4"><b>Age</b>:</div> *@
+@*             <div class="col-sm-6"> *@
+@*                 <span class="field-value">@Html.DisplayFor(model => model.Age)</span> *@
+@*             </div> *@
+           
+
+@*         <div class="col-sm-4"><b>Salary</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.Salary)</span> *@
+@*         </div> *@
+
+@*         <div class="col-sm-4"><b>Password</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.Password)</span> *@
+@*         </div> *@
+
+@*         <div class="col-sm-4"><b>Username</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.UserName)</span> *@
+@*         </div> *@
+
+@*         <div class="col-sm-4"><b>Course ID</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.CourseId)</span> *@
+@*         </div> *@
+@*         <div class="col-sm-4"><b>Course Name</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.CourseName)</span> *@
+@*         </div> *@
+@*         <div class="col-sm-4"><b>Department ID</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.DeptId)</span> *@
+@*         </div> *@
+
+
+@*         <div class="col-sm-4"><b>Department Name</b>:</div> *@
+@*         <div class="col-sm-6"> *@
+@*             <span class="field-value">@Html.DisplayFor(model => model.DepartmentName)</span> *@
+@*         </div> *@
+@*         </div> *@
+@*     </div> *@
+
+
+@*       </div> *@
+@* </div> *@
+@* <div > *@
+
+
+
+
+
+
+
+
+
+
+
+@*     </div> *@
+
+
+
+
+
+
+
+
+
+
+@*     <div > *@
+@*            <button class="btn btn-primary" > *@
+
+
+@*             <a asp-action="Edit" class="blacklink" asp-route-id="@Model.StudentId">Edit</a> *@
+
+@*         </button> *@
+@*         <button class="btn btn-primary"> *@
+
+
+@*             <a asp-action="Index" class="blacklink">Back to List *@
+
+@*                 <i class="bi bi-arrow-return-left"></i> *@
+
+
+                
+@*             </a> *@
+
+@*         </button> *@
+@* </div> *@
+@* </div> *@
+@model Crudbyme.Dtos.StudentDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="color:dimgray" class="m-3 bg-white p-3 shadow rounded">Student Details 🧑‍🎓</h1>
+
+<div>
+    <hr />
+    @* <div class="center-wrapper m-3 bg-white p-3 shadow rounded d-flex justify-content-center align-content-center" style="margin:auto"> *@
+        <div class="card-body m-3 bg-white p-3 shadow rounded d-flex justify-content-evenly border-primary">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <td><b>StudentID:</b></td>
+                        <td>@Html.DisplayFor(model => model.StudentId)</td>
+                    </tr>
+                    <tr>
+                        <td><b>First Name:</b></td>
+                        <td>@Html.DisplayFor(model => model.FirstName)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Last Name:</b></td>
+                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email:</b></td>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Enrollment Date:</b></td>
+                        <td>@Html.DisplayFor(model => model.EnrollmentDate)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Date of Birth:</b></td>
+                        <td>@Html.DisplayFor(model => model.DateOfBirth)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Age:</b></td>
+                        <td>@Html.DisplayFor(model => model.Age)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Salary:</b></td>
+                        <td>@Html.DisplayFor(model => model.Salary)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Password:</b></td>
+                        <td>@Html.DisplayFor(model => model.Password)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Username:</b></td>
+                        <td>@Html.DisplayFor(model => model.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Course ID:</b></td>
+                        <td>@Html.DisplayFor(model => model.CourseId)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Course Name:</b></td>
+                        <td>@Html.DisplayFor(model => model.CourseName)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Department ID:</b></td>
+                        <td>@Html.DisplayFor(model => model.DeptId)</td>
+                    </tr>
+                    <tr>
+                        <td><b>Department Name:</b></td>
+                        <td>@Html.DisplayFor(model => model.DepartmentName)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@* </div> *@
+
+<div>
+    <button class="btn btn-primary">
+        <a asp-action="Edit" class="blacklink" asp-route-id="@Model.StudentId">Edit</a>
+    </button>
+    <button class="btn btn-primary">
+        <a asp-action="Index" class="blacklink">Back to List
+            <i class="bi bi-arrow-return-left"></i>
+        </a>
+    </button>
+</div>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Crudbyme.Dtos.DepartmentDTO>
+
+@{
+    ViewData["Title"] = "Departments";
+    Layout = "_masterlayout1";
+}
+
+@* <h1>Departments</h1> *@
+<h3 style="color:dimgray" class="m-3 bg-white p-3 shadow  rounded d-flex justify-content-center align-content-center"> Departments </h3>
+
+<p>
+    @* <a asp-action="Departments">Departments</a> *@
+</p>
+@* <div class="center-wrapper m-3 bg-white p-3 shadow  rounded  d-flex justify-content-center align-content-center "  style="margin:auto"> *@
+        <div class="row">
+
+
+
+
+            <div class="card-body m-3 bg-white p-3 shadow  rounded ">
+
+@* <table class="table align-content-sm-center "> *@
+        <table class="table table-bordered text-center table-hover table table table-borderless table table-bordered table-striped align-content-center">
+
+
+
+    <thead>
+        <tr>
+            <th class="align-content-center">
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+                        <th class="align-content-center"> 
+                            @Html.DisplayNameFor(model => model.DeptId)
+                        </th>
+                       
+            @* <th class="align-content-center"> *@
+            @*     @Html.DisplayNameFor(model => model.DeptId) *@
+            @* </th> *@
+            @* <th></th> *@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                            <td align="center">@item.DeptName</td>
+                            <td align="center">@item.DeptId</td>
+            @* <td class=" d-flex align-content-center"> *@
+            @*     @Html.DisplayFor(modelItem => item.DeptName) *@
+            @*     </td> *@
+            @*               <tr>  <td class=" d-flex align-content-center"> *@
+            @*                     @Html.DisplayFor(modelItem => item.DeptId) *@
+            @*                 </td></tr> *@
+                @* <tr> *@
+                @* <td class=" d-flex align-content-center"> *@
+                @*     @Html.DisplayFor(modelItem => item.DeptName) *@
+                @* </td> *@
+                @* </tr> *@
+
+            @* <td> *@
+            @*     <a asp-action="Edit" asp-route-id="@item.DeptId">Edit</a> | *@
+            @*     <a asp-action="Details" asp-route-id="@item.DeptId">Details</a> | *@
+            @*     <a asp-action="Delete" asp-route-id="@item.DeptId">Delete</a> *@
+            @* </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    </<div>
+    <button class="btn btn-primary" id="backbtn">
+        <a asp-action="Index" style="text-decoration:none; color:black">
+
+            <i class="bi bi-arrow-return-left"></i>
+
+        </a>
+
+
+    </button>
+
+</div>
+</div>
+</div>
+    </div>

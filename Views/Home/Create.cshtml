@@ -1,0 +1,181 @@
+﻿@model Crudbyme.Dtos.StudentDto
+
+@{
+
+    ViewData["Title"] = "Create Student";
+
+    Layout = "_masterlayout1";
+}
+
+<h1> </h1>
+
+
+<div class="  d-flex justify-content-center">
+
+<div class="card card-secondary card-outline mb-4 pt-4" style="width:700px">
+
+
+        <div class="card-header justify-content-center"><div class="card-title">Register student to enroll in a new course!</div></div>
+                  
+
+<div class="card-body justify-content-center ">
+    
+
+
+
+    <form asp-action="Create" method="post">
+        <div class="row">
+        <div class="form-group  col-6 mb-3 max-width">
+            <label asp-for="FirstName" class="control-label">
+
+                First Name
+            </label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        
+                <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="LastName" class="control-label">Last Name</label>
+            <input asp-for="LastName" class="form-control" type="email" aria-describedby="emailHelp " id=" exampleInputEmail1" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div> 
+
+        <div class="form-group col-6 mb-3 max-width ">
+            <label asp-for="DeptId" class="control-label"> Department</label>
+            <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments">
+            </select>
+            <span asp-validation-for="DeptId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group  col-6 mb-3 max-width">
+            <label asp-for="CourseId" class="control-label">Course Name</label>
+            <select asp-for="CourseId" class="form-control" asp-items="@ViewBag.Courses">
+            </select>
+            <span asp-validation-for="CourseId" class="text-danger"></span>
+        </div>
+                
+                <div class="form-group col-6 mb-3 max-width">
+                    <label asp-for="Email" class="control-label"> </label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <div id="emailHelp" class="form-text">
+                        We'll never share your email with anyone else.
+                    </div>
+                </div>
+
+        <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="Salary" class="control-label"></label>
+            <input asp-for="Salary" class="form-control" />
+            <span asp-validation-for="Salary" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="UserName"  class="control-label"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        </<div></div>
+        <div class="row">
+        <!-- Date Picker -->
+        <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="DateOfBirth" class="control-label"> Date Of Birth</label>
+            <input asp-for="DateOfBirth" type="date" class="form-control" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <!-- Age Field -->
+        <div class="form-group col-6 mb-3 max-width">
+            <label asp-for="Age" class="control-label"></label>
+            <input asp-for="Age" class="form-control" disabled />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+       
+            </div>
+
+        <div class="form-group  col-6 mb-3 max-width">
+            <input type="submit" asp-action="Create" value="Create" method="post" class="btn btn-primary btn-sm" />
+                    <div class="btn btn-primary btn-sm">
+                        <a  style="color:black; text-decoration:none" asp-action="Index">Back to List</a>
+
+        </div>
+
+                </div>
+    </form>
+    </<div>
+    </<div>
+  
+    </div>
+    </div>
+</div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.querySelector("input[name='DateOfBirth']").addEventListener("change", function() {
+            var dob = new Date(this.value);
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            var m = today.getMonth() - dob.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            document.querySelector("input[name='Age']").value = age;
+        });
+    </script>
+
+@* @section Scripts { *@
+@*     @{ *@
+        @* await Html.RenderPartialAsync("_ValidationScriptsPartial"); *@
+    @* } *@
+    @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> *@
+
+    @* <script> *@
+    @*     // Handle department change event *@
+    @*     $('#DeptId').change(function () { *@
+    @*         var deptId = $(this).val(); // Get the selected department ID *@
+
+    @*         if (deptId) { *@
+    @*             // Make AJAX request to get courses for the selected department *@
+    @*             $.ajax({ *@
+    @*                 url: '@Url.Action("GetCoursesByDepartment", "Student")', // Action URL *@
+    @*                 data: { deptId: deptId }, *@
+    @*                 success: function (data) { *@
+    @*                     // Clear the course dropdown *@
+    @*                     $('#CourseId').empty(); *@
+    @*                     $('#CourseId').append('<option value="">Select Course</option>'); *@
+
+    @*                     // If courses are returned, populate the course dropdown *@
+    @*                     if (data.length > 0) { *@
+    @*                         data.forEach(function (course) { *@
+    @*                             $('#CourseId').append( *@
+    @*                                 $('<option>', { *@
+    @*                                     value: course.courseId, *@
+    @*                                     text: course.courseName *@
+    @*                                 }) *@
+    @*                             ); *@
+    @*                         }); *@
+    @*                     } else { *@
+    @*                         $('#CourseId').append('<option value="">No courses available</option>'); *@
+    @*                     } *@
+    @*                 }, *@
+    @*                 error: function () { *@
+    @*                     alert('Error fetching courses'); *@
+    @*                 } *@
+    @*             }); *@
+    @*         } else { *@
+    @*             // If no department selected, clear the courses dropdown *@
+    @*             $('#CourseId').empty(); *@
+    @*             $('#CourseId').append('<option value="">Select Department first</option>'); *@
+    @*         } *@
+    @*     }); *@
+    </script>
+}

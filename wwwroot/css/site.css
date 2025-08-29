@@ -1,0 +1,514 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.20rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 55px;
+    background-color: #f4f4f9; /* Custom background and text color */
+    color: #333;
+}
+
+/* Form placeholder styles */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* Pagination styles */
+.custom-pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.pagination-button {
+    background: #411c62;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+/* Slider styles */
+/* Slider Track */
+.slider {
+    -webkit-appearance: none; /* Remove default browser styling */
+    appearance: none;
+    width: 100%; /* Full width of the container */
+    height: 5px; /* Height of the track */
+    background: #411c62; /* Track color */
+    border-radius: 45px; /* Rounded corners for the track */
+    border: none; /* No border for the track */
+    outline: none; /* Remove outline */
+    opacity: 0.7;
+    transition: opacity 0.2s; /* Smooth transition */
+}
+
+    /* Slider Track on hover */
+    .slider:hover {
+        opacity: 1;
+    }
+
+    /* Slider Thumb (Chrome, Safari, Opera) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Remove default thumb appearance */
+        appearance: none;
+        width: 25px; /* Thumb width */
+        height: 25px; /* Thumb height */
+        border-radius: 50%; /* Circular thumb */
+        background: #411c62; /* Thumb color */
+        border: 2px solid #fff; /* White border around the thumb */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    /* Slider Thumb (Firefox) */
+    /*.slider::-moz-range-thumb {
+        width: 25px;*/ /* Thumb width */
+        /*height: 25px;*/ /* Thumb height */
+        /*border-radius: 50%;*/ /* Circular thumb */
+        /*background: #411c62;*/ /* Thumb color */
+        /*border: 2px solid #fff;*/ /* White border around the thumb */
+        /*cursor: pointer;*/ /* Change cursor to pointer on hover */
+    /*}*/
+
+    /* Slider Thumb (Internet Explorer) */
+    .slider::-ms-thumb {
+        width: 25px; /* Thumb width */
+        height: 25px; /* Thumb height */
+        border-radius: 50%; /* Circular thumb */
+        background: #411c62; /* Thumb color */
+        border: 2px solid #fff; /* White border around the thumb */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+/* Input field styling */
+input[type="text"][name="searchTerm"],
+select[name="DeptIds"],
+#ageSlider {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-block:thin;
+}
+
+/* Style for the multi-select dropdown */
+/*select[name="DeptIds"] {
+    width: 100%;
+    height: 200px;
+    background-color: #411c62 !important;*/ /* Set background color of select */
+    /*color: white !important;*/ /* Set text color to white for better contrast */
+    /*border: 1px solid #411c62 !important;*/ /* Set border color */
+    /*border-radius: 5px !important;*/ /* Rounded corners */
+    /*padding: 10px !important;*/ /* Padding for the select box */
+    /*font-size: 14px;*/ /* Adjust font size if needed */
+    /*outline: none;*/ /* Remove outline */
+    /*appearance: none !important;*/ /* Remove default dropdown appearance */
+/*}*/
+
+    /* Style for options in the multi-select */
+    /*select[name="DeptIds"] option {
+        background-color: #f4f4f9;*/ /* Background color for options */
+        /*color: #333;*/ /* Text color for options */
+    /*}*/
+
+    /* Style for selected options */
+    /*select[name="DeptIds"]:focus {
+        background-color: #411c62 !important;*/ /* Background color when focused */
+        /*color: white !important;*/ /* Text color when focused */
+        /*border-color: #258cfb !important;*/ /* Border color when focused */
+    /*}*/
+
+    /* Style for hovered option */
+    /*select[name="DeptIds"] option:hover {
+        background-color: #d3d3d3 !important;*/ /* Hover effect on options */
+    /*}*/
+
+    /* Style for the multiple selected options */
+    /*select[name="DeptIds"] option:checked {
+        background-color: #411c62 !important;*/ /* Background color for selected options */
+        /*color: white !important;*/ /* Text color for selected options */
+    /*}*/
+
+    /* Optional: style the dropdown's arrow */
+    /*select[name="DeptIds"]::-ms-expand {
+        display: none;*/ /* Hides the default arrow in IE */
+    /*}*/
+
+/* Hiding native select dropdown arrow in most modern browsers */
+/*select[name="DeptIds"] {
+    -webkit-appearance: none;*/ /* Chrome, Safari, Opera */
+    /*-moz-appearance: none;*/ /* Firefox */
+    /*appearance: none;*/ /* Standard */
+    /*background-image: none;*/ /* Remove the arrow */
+    /*padding-right: 25px;*/ /* Add space for the custom arrow */
+/*}*/
+
+    /* Adding custom arrow (optional) */
+    select[name="DeptIds"]::after {
+        content: '\2193'; /* Downwards arrow symbol */
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+    }
+
+
+
+/* Table header styles */
+table th {
+    background-color: #b8eb; /* Blue background */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+    /*table th {
+        background-color: #682c9d;*/ /* Darker blue when hovered */
+        /*color: white;
+        cursor: pointer;
+    }*/
+.table th a{
+ color:black;
+ 
+ text-decoration:none;
+
+}
+/*    .table th a:hover {
+        color: #563b6e;
+    }*/
+.table td a {
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+}
+.table td {
+    font-size: 12px;
+}
+
+table tr:nth-child(even) {
+    background-color: #b8eb;
+}
+
+
+/* Navbar styles */
+/*.navbar {
+    background-color: #563b6e;
+}*/
+
+    .navbar .navbar-brand,
+/*    .navbar .navbar-nav .nav-link {
+        color: #ffffff;
+    }*/
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #f1f1f1;
+        }
+
+/* Button styles */
+/*.btn-primary {
+    background-color: #563b6e;
+}*/
+
+   
+
+
+
+
+
+
+
+
+/* Link styles */
+/*a {
+    color: #563b6e;
+}
+
+    a:hover, a:focus {
+        color: black;
+    }*/
+/*a {
+    color: #563b6e;*/ /* Default link color */
+    /*text-decoration: none;*/ /* Remove underline */
+/*}*/
+.actionbtn {
+    color: white; /* Default link color */
+    text-decoration: none; /* Remove underline */
+    
+}
+    /* Ensure links are styled when hovered */
+    /*a:hover, a:focus {
+        color: black;*/ /* Link hover color */
+        /*text-decoration: underline;*/ /* Add underline on hover */
+    /*}*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.nav-link :hover{
+
+    text-decoration:none;   
+}
+.form-control:hover, form-control{
+
+      outline: 2px solid grey; 
+/*      outline-color: black;
+*/
+}
+/*.col-lg-2:hover {
+    color: #563b6e;
+}*/
+.pagination-container row-cols-2 {
+    color: #563b6e;
+}
+.app-main {
+    /*    background: #848385bb;
+    font-family:Algerian;*/
+    background: #f4f4f9;
+}
+/*.bi-search{
+    position: absolute;
+    top: 40px;
+    left: 315px;
+}*/
+.ui-slider-handle ui-corner-all ui-state-default ui-state-focus:hover{
+    color:brown;
+
+}
+    /*}
+.card-header text-center {
+    border-radius: 150px;
+    color: #563b6e;
+    background-color: #411c62;
+    font-family: Algerian;
+    background-color: #411c62;
+}
+.card {
+    border-radius: 150px;
+    background-color: lightslategrey !important;
+    font-family: Serif;
+}
+.h1, h3, h4, h6 {
+    color: darkblue;
+}
+
+.container mt-5 {
+}
+.p {
+    color:black;
+}
+*/
+/*.page-link {
+   background-color: #563b6e !important;
+   color:aliceblue;
+}*/
+/*.dropdown-wrapper {
+    background-color: #563b6e !important;
+}
+.form-control select2-hidden-accessible {
+    background-color: #563b6e !important;
+}
+.select2-search__field {
+    background-color: #563b6e !important;
+}
+.select2-selection select2-selection--multiple {
+    background-color: #563b6e !important;
+}
+select2-selection__rendered {
+    background-color: #563b6e !important;*/
+}
+.form-group{
+
+    max-width;
+}
+.select2-results__option--highlighted {
+    background-color: dimgrey !important;
+}
+/*.form-control {
+    background-color: #563b6e !important;
+}*/
+#PageNumber__option--highlighted {
+    background-color: #563b6e !important;
+}
+.selected {
+    background-color: #563b6e !important;
+}
+.select2-selection select2-selection--multiple {
+    background-color: #563b6e !important;
+}
+#editbtn{
+    background-color:beige;
+
+}
+#detailbtn{
+
+    background-color:lightslategrey;
+}
+
+#deletebtn {
+    /*    background-color:indianred;
+}*/
+    background-color:brown;}
+#searchbtn{
+
+    background-color:dimgrey;
+    color:black;
+
+}
+#clearbtn{
+    background-color:grey;
+    color:black;
+
+}
+
+.page-item{
+     background-color:dimgrey;
+
+}
+.page-link::before{
+    background-color:slategrey;
+    color:white;
+
+}
+.page-link:hover {
+    background-color: slategrey;
+    color: white;
+}
+/*.form-control:hover{
+
+    background-color:gray;
+}*/
+.ui-slider-handle ui-corner-all ui-state-default::after hover{
+
+    color:slategray;
+}
+.page-item active {
+    color: slategray;
+}
+.page-link {
+    background-color: slategrey;
+}
+.ui-state-default, .ui-widget-header .ui-state-focus, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+
+    color:grey
+}
+.btn btn-secondary :hover{
+    color:white;
+
+}
+.active > .page-link, .page-link.active{
+
+    background-color:slategrey;
+}
+
+.btn-primary {
+    background-color: slategrey;
+    text-decoration: none;
+    color: black;
+}
+.btn-primary:hover {
+    background-color: slategrey;
+    text-decoration: none;
+    color: black;
+}
+.btn-primary:hover {
+    background-color: slategrey;
+    color: black;
+    text-decoration: none;
+}
+.bi bi-arrow-return-left{
+    color:black;    
+
+
+}
+.blacklink{
+    color:black;
+    text-decoration:none;
+}
+.nav-link{
+    color:white;
+}
+.ui-slider-handle ui-corner-all ui-state-default ui-state-focus ui-state-active:hover{
+    color: dimgrey;
+}
+.ui-state-active{
+    background-color:dimgrey !important;
+}
+.hi:hover{
+
+    color:gray;
+
+}
+.btn-primary{
+     color:black !important;
+     text-decoration:none;
+ }
+@media (prefers-color-scheme: dark) {
+
+        a {
+
+            color: white;
+
+        }
+
+    }
+.a {
+    color: black !important;
+    text-decoration: none !important;
+}
+#backbtn {
+    color: black !important;
+}
+.page-item {
+    color: black;
+}
+.bs-pagination-focus-color{
+    color:black;
+}
+.page-item:not(:first-child) .page-link {
+color:black;}
+.page-item:first-child .page-link {
+    color: black;
+}
+.button:focus:not(:focus-visible) {
+    background-color: dimgrey;
+}
+.dropdown-item.active, .dropdown-item:active {
+background-color:dimgray;
+
+}
+.icon-rotate {
+    transform: rotate(180deg) !important;
+    transition: transform 0.3s ease-in-out;
+}
+.btn-primary{
+
+    color:black;
+    text-decoration:none;
+}
+.btn btn-danger{
+    background-color:dimgray !important;
+    color:white !important;
+}

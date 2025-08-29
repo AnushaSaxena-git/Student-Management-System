@@ -1,0 +1,539 @@
+﻿@model IEnumerable<Crudbyme.Dtos.StudentDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_masterlayout1";
+}
+
+
+
+  @{  if (TempData["insert_success"]!= null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>@TempData["insert_success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+}
+@{
+    if (TempData["update_success"]!=null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>@TempData["update_success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+}
+@{
+    if (TempData["delete_success"]!= null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>@TempData["delete_success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    }
+
+<h3 style="color:dimgray" class="m-3 bg-white p-3 shadow  rounded">Student Enrollments🧑🏻‍🎓</h3>
+
+@* <br /> *@
+@* <h6>Hey students! Now you can register in a new course and can earn stipend!</h6> *@
+@* <h6>Here is the link for your New courses</h6> *@
+@* <h4>Register Now!</h4> *@
+
+@* <div style="display:flex;justify-content:space-between " class="center-wrapper"> *@
+@*     <p> *@
+
+
+        @* <a asp-action = "Create">Click here to Register in a new course!👇</a> *@
+@*     </p> *@
+@*     <br /> *@
+
+@* </div> *@
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            // Initialize the age range slider
+            $("#ageRangeSlider").slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [0, 100], // Default values for the range
+                slide: function (event, ui) {
+                    // Update the displayed range
+                    $("#ageMin").text(ui.values[0]);
+                    $("#ageMax").text(ui.values[1]);
+
+                    // Update the hidden inputs
+                    $("#AgeMin").val(ui.values[0]);
+                    $("#AgeMax").val(ui.values[1]);
+
+                    // Trigger the form submission
+                    // $("form").submit();
+                }
+            });
+
+            // Set initial values from the form (if filters are already applied)
+            const ageMinValue = parseInt($("#AgeMin").val()) || 0;
+            const ageMaxValue = parseInt($("#AgeMax").val()) || 100;
+            $("#ageRangeSlider").slider("values", [ageMinValue, ageMaxValue]);
+            $("#ageMin").text(ageMinValue);
+            $("#ageMax").text(ageMaxValue);
+
+            // Initialize the salary range slider
+            $("#salaryRangeSlider").slider({
+                range: true,
+                min: 10000,
+                max: 200000,
+                values: [10000, 200000], // Default values for the range
+                slide: function (event, ui) {
+                    // Update the displayed range
+                    $("#salaryMin").text(ui.values[0]);
+                    $("#salaryMax").text(ui.values[1]);
+
+                    // Update the hidden inputs
+                    $("#SalaryMin").val(ui.values[0]);
+                    $("#SalaryMax").val(ui.values[1]);
+
+                    // Trigger the form submission
+                    // $("form").submit();// it automatically submits the code
+                }
+            });
+
+            // Set initial values from the form (if filters are already applied)
+            const salaryMinValue = parseInt($("#SalaryMin").val()) || 10000;
+            const salaryMaxValue = parseInt($("#SalaryMax").val()) || 200000;
+            $("#salaryRangeSlider").slider("values", [salaryMinValue, salaryMaxValue]);
+            $("#salaryMin").text(salaryMinValue);
+            $("#salaryMax").text(salaryMaxValue);
+        });
+
+        // Clear the search filters and reset the form
+        function clearSearch() {
+            // Reset the text search input
+            $("input[name='SearchTerm']").val('');
+
+            // Reset the departments select dropdown
+            $("#departments2").val([]).trigger('change');  // Clear selected departments
+            $("#PageNumber").val([1]).trigger('change');
+
+            // Reset the age slider and hidden inputs
+            $("#ageRangeSlider").slider("values", [0, 100]);
+            $("#ageMin").text(0);
+            $("#ageMax").text(100);
+            $("#AgeMin").val(0);
+            $("#AgeMax").val(100);
+
+            // Reset the salary slider and hidden inputs
+            $("#salaryRangeSlider").slider("values", [10000, 200000]);
+            $("#salaryMin").text(10000);
+            $("#salaryMax").text(200000);
+            $("#SalaryMin").val(10000);
+            $("#SalaryMax").val(200000);
+
+            // Submit the form to apply reset
+            $("form").submit();
+        }
+
+                document.getElementById("departments2").addEventListener("click", function(event){
+  event.preventDefault()
+});
+
+
+      
+    </script>
+}
+
+
+<div class="center-wrapper m-3 bg-white p-3 shadow  rounded">
+    @* <div class="row col-1 mt-xl-3 pt-lg-4 text-end "> *@
+        @* <button class="btn btn-outline-secondary"> *@
+            <div class="text-end">
+
+        <a asp-action="Create" title="Add New Person" aria-label="Add New Person"><i class="bi bi-person-fill-add d-flex text-end" style="color:black "></i></a>
+
+
+            </div>
+            @* </button> *@
+    @* </div> *@
+    <form asp-action="Index" method="get" id="searchForm" title="search">
+        <div class="row mt-3 pt-3 bg-white">
+            <div class="col-lg-3" >
+                <label class="form-label">Search  </label>&nbsp;
+
+                <div class="input-group"><input class="form-control " type="text" placeholder="Search Student,Department " name="SearchTerm" value="@ViewBag.SearchTerm" id="searchInput" /> <span class="input-group-text"><i class="bi-search"></i></span></div>
+
+            </div>
+          
+            @* <script> *@
+            @*     $(document).ready(function() { *@
+            @*         var debounceTimeout; *@
+
+            @*         $('#searchInput').on('input', function() { *@
+            @*             var searchInput = $(this); *@
+
+            @*             // Clear any existing debounce timeout *@
+            @*             clearTimeout(debounceTimeout); *@
+
+            @*             // Set a new timeout to submit the form after 500ms (or any value you prefer) *@
+            @*             debounceTimeout = setTimeout(function() { *@
+            @*                 searchInput.closest('form').submit();  // Submit the form after typing stops *@
+            @*             }, 500);  // Wait for 500ms after the user stops typing *@
+            @*         }); *@
+
+            @*         // Focus the search input after the page reloads *@
+            @*         var searchInput = $('#searchInput'); *@
+            @*         if (searchInput.length > 0) { *@
+            @*             setTimeout(function() { *@
+            @*                 searchInput.focus(); *@
+            @*             },1000); // Re-focus after 50ms *@
+            @*         } *@
+            @*     }); *@
+            @* </script> *@
+
+          
+
+            <div class="col-lg-2" >
+                <label class="form-label" for="departments">Departments</label>
+                @* normal multi select *@
+                @* <select class="form-control " id="departments2" name="DeptIds" multiple="multiple" style="width: 100%; height: 150px;"> *@
+                @*     @foreach (var department in ViewBag.Departments as List<SelectListItem>) *@
+                @*     { *@
+                @*         <option value="@department.Value">@department.Text</option> *@
+                @*     } *@
+                @* </select> *@
+
+                @* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+
+
+
+                
+                @* multi select for automatic select only onchange=this.form.submit() has been added  *@
+                @* <select class="form-control" id="departments2" name="DeptIds" multiple="multiple" style="width: 100%; height: 150px;" onchange="this.form.submit();"> *@
+                @*     @foreach (var department in ViewBag.Departments as List<SelectListItem>) *@
+                @*     { *@
+                @*         <option value="@department.Value">@department.Text</option> *@
+                @*     } *@
+                @* </select> *@
+                <select class="form-control " id="departments2" name="DeptIds" multiple="multiple" style="width: 100%; height: 150px;">
+                    @foreach (var department in ViewBag.Departments as List<SelectListItem>)
+                    {
+                        <option value="@department.Value">@department.Text</option>
+                    }
+                </select>
+
+                <div id="loading" style="display:none;">Loading...</div>
+
+                
+
+
+
+
+              
+
+<script>
+
+
+
+
+                    // $(document).ready(function () {
+                    //            var selectedText = []; // Initialize an empty array to store the selected option texts
+
+                    //            // Detect change event on select element
+                    //            $('#departments2').on('change', function () {
+                    //            // Show loading message (optional)
+                    //            $('#loading').show();
+
+                    //            // Update the text box with selected department names
+                    //            updateSelectedDepartments();
+
+                    //            // Optionally, submit the form when selection changes
+                    //            $(this).closest('form').submit();
+                    //            });
+
+                    //            // Function to update the textbox with selected department names
+                    //            function updateSelectedDepartments() {
+                    //            // Get selected values (array of selected option values)
+                    //            var selectedValues = $('#departments2').val();
+
+                    //            // Clear selected text array
+                    //            selectedText = [];
+
+                    //            // Iterate through selected values to get the corresponding text
+                    //            $('#departments2 option').each(function () {
+                    //            if ($(this).prop('selected')) {
+                    //            selectedText.push($(this).text());
+                    //            }
+                    //            });
+
+                    //            // Join the selected department names and set them in the text box (for display purposes)
+                    //            $('#departments2').next('.selected-text-box').val(selectedText.join(', ')); // Assuming you have a text box next to your dropdown to display the selected departments
+                    //            }
+
+                    //            // Optional: Initialize the selected departments textbox on page load (if any department is pre-selected)
+                    //            updateSelectedDepartments();
+                    //            });
+
+</script>
+               
+              
+
+            </div>
+
+           
+        
+
+            <div class="col-lg-2 pt-1 mt-1 ">
+                <label for="ageRangeSlider">
+                    Age :                 <span id="ageMin">0</span> - <span id="ageMax">100</span>
+                </label>
+                <div id="ageRangeSlider" class="form-control mt-4"></div>
+
+                <input type="hidden" id="AgeMin" name="AgeMin" value="0">
+                <input type="hidden" id="AgeMax" name="AgeMax" value="100">
+            </div>
+            <div class="col-lg-2 pt-1 mt-1 ">
+                <label for="salaryRangeSlider">
+                    Salary : <span id="salaryMin">10000</span> - <span id="salaryMax">200000</span>
+                </label>
+                <div id="salaryRangeSlider" class="form-control mt-4"></div>
+                <p>
+                </p>
+                <input type="hidden" id="SalaryMin" name="SalaryMin" value="10000">
+                <input type="hidden" id="SalaryMax" name="SalaryMax" value="200000">
+            </div>
+            <div class="col-lg-1 pt-1 mt-2">
+                <label> Pagesize:<span id="PageSize"></span></label>
+                @Html.DropDownList("PageSize", (IEnumerable<SelectListItem>)ViewBag.PageSizeddl,
+                         new { onchange = "this.form.submit();", @class = "form-control", id = "PageSize" })
+
+
+            </div>
+         
+            <div class="col-lg-1 pt-1 mt-xxl-3 pt-lg-4 text-end ">
+                <label class="form-label" hidden>Submit</label>
+                <button class="btn btn-primary btn-sm" type="submit" id="searchbtn"><i class="bi bi-search"></i></button>
+                <!-- Clear Search Button -->
+
+             
+            </div> <div class="col-lg-1 pt-2 mt-xxl-3 pt-lg-4">
+                <label class="form-label" hidden>Clear</label>
+                <button class="btn btn-secondary  btn-sm " type="button" onclick="clearSearch()" id="clearbtn">Clear </button>
+            </div>
+          
+
+           
+
+        </div>
+
+
+
+
+
+    </form>
+
+
+</div>
+
+<div class="card-body m-3 bg-white p-3 shadow  rounded d-flex align-content-center">
+    <table class="table table-bordered text-center table-hover table table table-borderless align-content-lg-end border-bottom">
+        <thead>
+            <tr>
+              
+                @* <th> *@
+                @*     <a class="headerSortDown" asp-action="Index" asp-route-SortBy="studentFirstName">First Name</a> *@
+                @* </th> *@
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="FullName" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">Full Name <i id="FullName" class="bi"></i></a>
+                </th>
+              
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="studentage" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">@Html.DisplayNameFor(model => model.Age) <i id="studentage" class="bi"></i></a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="studentsalary" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">@Html.DisplayNameFor(model => model.Salary) <i id="studentsalary" class="bi"></i></a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="CourseName" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">Course <i id="CourseName" class="bi"></i> </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="deptName" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">Department <i id="deptName" class="bi"></i></a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="Email" asp-route-SortOrder="@ViewData["SortOrder"]" class="sortable-header">Email <i id="Email" class="bi"></i></a>
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="align-middle">
+                
+            </tr>
+            @if (Model.Count() > 0)
+            {
+
+                @foreach (var item in Model)
+                {
+
+
+
+                    <tr class="align-middle">
+
+                        <td class="hi">
+                            <a href="@Url.Action("Details", "Home", new { id = item.StudentId })">
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </a>
+                        </td>
+                        @* <td>@Html.DisplayFor(modelItem => item.LastName)</td> *@
+                    
+                        <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Salary)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
+                        <td class="hi">
+                            <a href="@Url.Action("Details", "Home", new { id = item.StudentId })">
+                                    @item.Email
+                            </a>
+                        </td>
+
+                        <td class="text-center">
+                            <button class="btn btn-outline-secondary " id="detailbtn"> 
+                                
+                               <a asp-action="Details"  asp-route-id="@item.StudentId">
+                                   <i class="bi bi-eye-fill"></i>
+                                   </a> </button>
+                            <button class="btn btn-outline-secondary " id="editbtn">
+
+                                <a asp-action="Edit"  asp-route-id="@item.StudentId">
+                                    <i class="bi bi-pen-fill"></i>
+                                </a>
+                            </button>
+                            <button class="btn btn-outline-secondary" id="deletebtn">  <a asp-action="Delete" asp-route-id="@item.StudentId"><i class="bi bi-trash3-fill"></i></a></button>
+                        </td>
+                    </tr>
+                }
+
+            }
+            else
+            {
+
+                <tr>
+                    <td colspan="11">No Records found for the Match </td>
+                </tr> 
+            }
+
+        </tbody>
+    </table>
+</div>
+      
+<div class="card-footer">
+
+
+
+<div style="font-size:13px">
+
+
+        Showing  @(ViewBag.PageSize == null ? 1 : ((ViewBag.PageNumber - 1) * ViewBag.PageSize + 1)) to @(
+        ViewBag.PageSize == null ? ViewBag.TotalStudents : (
+        (ViewBag.PageNumber * ViewBag.PageSize) > ViewBag.TotalStudents
+        ? ViewBag.TotalStudents
+        : (ViewBag.PageNumber * ViewBag.PageSize))
+        ) of @(ViewBag.TotalStudents) Matching Records
+
+
+
+</div>
+   
+
+        <div>
+
+    
+
+<ul class="pagination pagination-md m-0 float-lg-end"> 
+            <!-- Previous Page Link --> 
+           @if (ViewBag.PageNumber > 1) 
+           { 
+                 <li class="page-item @((ViewBag.PageNumber <= 1) ? "disabled" : "")"> 
+                     <a class="page-link" href="@Url.Action("Index", new {
+                 PageNumber = ViewBag.PageNumber - 1, 
+                  PageSize=ViewBag.PageSize,
+
+                 SearchTerm = ViewBag.SearchTerm, 
+
+                 DeptIds =Uri.EscapeDataString(string.Join(",", ViewBag.DeptIds ?? new string[0])),
+                 AgeMin = ViewBag.AgeMin,
+                 AgeMax = ViewBag.AgeMax, 
+                 SalaryMin = ViewBag.SalaryMin, 
+                 SalaryMax = ViewBag.SalaryMax, 
+                 SortBy = ViewBag.SortBy, 
+                 SortOrder = ViewBag.SortOrder })">«</a> 
+                 </li> 
+             } 
+
+             <!-- Page Number Links --> 
+             @for (int i = 1; i <= ViewBag.TotalPages; i++) 
+             { 
+                 <li class="page-item @((i == ViewBag.PageNumber) ? "active" : "")"> 
+                     <a class="page-link" href="@Url.Action("Index", new { 
+                 PageNumber = i, 
+                  PageSize=ViewBag.PageSize,
+                 SearchTerm = ViewBag.SearchTerm, 
+                 DeptIds =ViewBag.DeptIds ,
+                 AgeMin = ViewBag.AgeMin,
+                 AgeMax = ViewBag.AgeMax, 
+                 SalaryMin = ViewBag.SalaryMin, 
+                 SalaryMax = ViewBag.SalaryMax, 
+                 SortBy = ViewBag.SortBy, 
+                 SortOrder = ViewBag.SortOrder })">@i</a> 
+                 </li> 
+             } 
+
+             <!-- Next Page Link --> 
+             <li class="page-item @((ViewBag.PageNumber >= ViewBag.TotalPages) ? "disabled" : "")"> 
+                 <a class="page-link" href="@Url.Action("Index", new { 
+             PageNumber = ViewBag.PageNumber + 1, 
+                  PageSize=ViewBag.PageSize,
+                 DeptIds =Uri.EscapeDataString(string.Join(",", ViewBag.DeptIds ?? new string[0])),
+
+             SearchTerm = ViewBag.SearchTerm, 
+             AgeMin = ViewBag.AgeMin, 
+
+             AgeMax = ViewBag.AgeMax, 
+             SalaryMin = ViewBag.SalaryMin, 
+             SalaryMax = ViewBag.SalaryMax, 
+             SortBy = ViewBag.SortBy, 
+             SortOrder = ViewBag.SortOrder })">»</a> 
+             </li> 
+         </ul> 
+         <form>
+
+        <div class="col-lg-md float-lg-start">
+            <label style="font-size:13px"> Pagesize:<span id="PageSize" style="font-size:12px"></span></label>
+            @Html.DropDownList("PageSize", (IEnumerable<SelectListItem>)ViewBag.PageSizeddl,
+                     new { onchange = "this.form.submit();", @class = "form-control", id = "PageSize" })
+
+
+        </div>
+
+         </form>
+
+
+    </div>
+
+
+                  </div>
+                  <script>
+
+
+   
+
+
+
+                  </script>
+

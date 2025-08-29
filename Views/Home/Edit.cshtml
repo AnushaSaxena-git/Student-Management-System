@@ -1,0 +1,144 @@
+﻿@model Crudbyme.Dtos.StudentDto
+
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Student Details</h1>
+
+@* <h4>student</h4> *@
+<hr />
+<div  class="card-primary card-outline mb-4 pt-4" style="width:700px"></div>
+<div class="card-body justify-content-center">
+        <form asp-action="Edit">
+            <div class="row">
+            @* <div class="col-md-4"> *@
+                <div class="col-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StudentId"  class="form-control   form-control-lg" aria-label=".form-control-lg example"/>
+            <div class="form-group ">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control  form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="EnrollmentDate" class="control-label"></label> *@
+            @*     <input asp-for="EnrollmentDate" class="form-control" /> *@
+            @*     <span asp-validation-for="EnrollmentDate" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="col-6">
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+
+            <div class="form-group"> 
+              <label asp-for="Password" class="control-label"></label> 
+                <input asp-for="Password" placeholder="Re-enter your password to save details" class="form-control form-control-lg" aria-label=".form-control-lg example" />
+                <span asp-validation-for="Password" class="text-danger"></span> 
+            </div> 
+            </div>
+            <div class="col-6">
+
+             <div class="form-group"> 
+                 <label asp-for="UserName" class="control-label"></label> 
+                <input asp-for="UserName" class="form-control form-control-lg" aria-label=".form-control-lg example  />
+                <span asp-validation-for="UserName" class="text-danger"></span> 
+           </div> 
+           </div>
+          @*   <div class="form-group"> *@
+          @*       <label asp-for="CourseId" class="control-label"></label>  *@
+          @*       <input asp-for="CourseId" class="form-control" />  *@
+          @*        <span asp-validation-for="CourseId" class="text-danger"></span>  *@
+          @*  </div>  *@
+          @*    <div class="form-group">  *@
+          @*     <label asp-for="DeptId" class="control-label"></label>  *@
+          @*       <select asp-for="DeptId" class="form-control" asp-items="ViewBag.deptid"></select>  *@
+          @*        <span asp-validation-for="DeptId" class="text-danger"></span>  *@
+          @* </div> *@
+            <div class="col-6">
+
+            <div class="form-group mb-3">
+                <label asp-for="DeptId" class="control-label"> Department</label>
+                <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Departments">
+                </select>
+                <span asp-validation-for="DeptId" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+                
+            <div class="form-group mb-3">
+                <label asp-for="CourseId" class="control-label">CourseName</label>
+                <select asp-for="CourseId" class="form-control" asp-items="@ViewBag.Courses">
+                </select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="form-group col-6 mb-3 ">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" disabled />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            </div>
+            </<div>
+            <hr>
+
+
+
+
+            <div class="col-6">
+
+
+
+
+
+            <div class="form-group">
+                <input type="submit"  asp-action="Edit" value="Save" class="btn btn-primary" />
+                    <div class="btn btn-primary black">
+                        <a asp-action="Index" style=" color:black; text-decoration:none " >Back to List</a>
+                    </div>
+            </div>
+            </div>
+
+                
+            </div>
+        </form>
+    </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ 
